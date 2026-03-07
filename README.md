@@ -1,18 +1,37 @@
-# React + Vite
+# 3D Avatar Virtual Teacher
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React + Vite web app where a virtual teacher reads PDF text aloud and points to each spoken word in real time.
 
-Currently, two official plugins are available:
+## What Is Implemented
+- PDF rendering with `react-pdf` (single-page view with page navigation and zoom).
+- Text-layer word extraction from PDF spans.
+- Text-to-speech playback using `SpeechSynthesisUtterance`.
+- Word-level sync using `speechSynthesis.onboundary` + binary search mapping.
+- Live viewport highlight overlay on the currently spoken word.
+- Animated 3D-style avatar pointer with speaking/paused states.
+- Auto page-turn and optional auto-continue reading.
+- Voice, rate, and pitch controls with runtime status panel.
+- GitHub Pages deployment setup (`gh-pages`, Vite `base`, `homepage`).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Figures
+- `5` source `.jsx` files and `2` source `.css` files in `src/`.
+- `3` custom core components: `PdfTeacher`, `AvatarPointer`, `WordHighlightOverlay`.
+- `9` direct npm dependencies (`3` runtime + `6` dev).
+- `~1,550` lines across source (`.jsx/.js/.css`, including comments).
+- Latest production build transformed `72` modules in `2.42s`.
+- Latest bundle output:
+  - `535.93 kB` main JS (`162.78 kB` gzip)
+  - `21.90 kB` CSS (`5.14 kB` gzip)
+  - `1,369.81 kB` PDF worker asset
 
-## React Compiler
+## Run Locally
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Build and Deploy
+```bash
+npm run build
+npm run deploy
+```
